@@ -1,0 +1,50 @@
+<TemplatesExport family="File Templates">
+  <Template uid="16c60e92-dc3c-426c-aaba-ec89b000b3f9" shortcut="" description="AutoMockTestFixture" text="using MbUnit.Framework;&#xD;&#xA;using Rhino.Mocks;&#xD;&#xA;&#xD;&#xA;namespace $NAMESPACE$&#xD;&#xA;{&#xD;&#xA;    [TestFixture]&#xD;&#xA;    public class $FIXTURE_NAME$   : AutoMockingTest&#xD;&#xA;    {&#xD;&#xA;        public override void Setup()&#xD;&#xA;        {&#xD;&#xA;        }&#xD;&#xA;    &#xD;&#xA;        [Test]&#xD;&#xA;        public void $FIRST_TEST_NAME$()&#xD;&#xA;        {&#xD;&#xA;              $END$&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        &#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <ProjectLanguageContext language="CSharp" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="NAMESPACE" expression="fileDefaultNamespace()" initialRange="-1" />
+      <Variable name="FIXTURE_NAME" expression="getFileNameWithoutExtension()" initialRange="-1" />
+      <Variable name="FIRST_TEST_NAME" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties>
+      <Property key="FileName" value="File" />
+      <Property key="Extension" value="cs" />
+      <Property key="ValidateFileName" value="False" />
+    </CustomProperties>
+  </Template>
+  <Template uid="6fb04b7a-eb3a-4686-8b4b-3f5fcf5fef73" shortcut="" description="MockTestFixture" text="using MbUnit.Framework;&#xD;&#xA;using Rhino.Mocks;&#xD;&#xA;&#xD;&#xA;namespace $NAMESPACE$&#xD;&#xA;{&#xD;&#xA;    [TestFixture]&#xD;&#xA;    public class $FIXTURE_NAME$&#xD;&#xA;    {&#xD;&#xA;        private MockRepository mockery;&#xD;&#xA;&#xD;&#xA;        [SetUp]&#xD;&#xA;        public void Setup()&#xD;&#xA;        {&#xD;&#xA;            mockery = new MockRepository();&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        [Test]&#xD;&#xA;        public void $FIRST_TEST_NAME$()&#xD;&#xA;        {&#xD;&#xA;              $END$&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        &#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <ProjectLanguageContext language="CSharp" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="NAMESPACE" expression="fileDefaultNamespace()" initialRange="-1" />
+      <Variable name="FIXTURE_NAME" expression="getFileNameWithoutExtension()" initialRange="-1" />
+      <Variable name="FIRST_TEST_NAME" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties>
+      <Property key="FileName" value="File" />
+      <Property key="Extension" value="cs" />
+      <Property key="ValidateFileName" value="False" />
+    </CustomProperties>
+  </Template>
+  <Template uid="64ff222d-34e6-416f-aaa7-94a653b66b99" shortcut="" description="TestFixture" text="using NUnit.Framework;&#xD;&#xA;&#xD;&#xA;namespace $NAMESPACE$&#xD;&#xA;{&#xD;&#xA;    [TestFixture]&#xD;&#xA;    public class $FIXTURE_NAME$&#xD;&#xA;    {        &#xD;&#xA;                    &#xD;&#xA;        [Test]&#xD;&#xA;        public void $FIRST_TEST_NAME$()&#xD;&#xA;        {&#xD;&#xA;              $END$&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <ProjectLanguageContext language="CSharp" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="NAMESPACE" expression="fileDefaultNamespace()" initialRange="-1" />
+      <Variable name="FIXTURE_NAME" expression="getFileNameWithoutExtension()" initialRange="-1" />
+      <Variable name="FIRST_TEST_NAME" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties>
+      <Property key="FileName" value="File" />
+      <Property key="Extension" value="cs" />
+      <Property key="ValidateFileName" value="False" />
+    </CustomProperties>
+  </Template>
+</TemplatesExport>

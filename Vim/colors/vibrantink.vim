@@ -45,6 +45,7 @@ if has("gui_running")
     highlight String guifg=#66FF00
     highlight Search guibg=White
     highlight CursorLine guibg=#323300
+    highlight PMenu gui=bold guibg=#CECECE guifg=#444444
 else
     set t_Co=256
     highlight Normal ctermfg=White ctermbg=Black 

@@ -13,9 +13,9 @@ if has("gui_macvim")
         hi normal guibg=black
         set transp=8
     endif
-	if (has('gui_running'))
-	    set guifont=Consolas:h13.0:cANSI
-	endif
+    if (has('gui_running'))
+        set guifont=Consolas:h13.0:cANSI
+    endif
 endif
 
 if (has('gui_running'))
@@ -36,5 +36,6 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
 

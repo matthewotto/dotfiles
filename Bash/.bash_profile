@@ -8,6 +8,7 @@ alias gd='git diff'
 alias gl='git log'
 source ~/.git-completion.sh
 JAVA_HOME=/Library/Java/Home
+export LSCOLORS=Dxfxcxdxbxegedabagacad
 if [ -f ~/.bashrc ]; then
 . ~/.bashrc
 fi

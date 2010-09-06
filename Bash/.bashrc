@@ -49,7 +49,7 @@ function pprom {
           TITLEBAR=""
           ;;
   esac
-PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$(~/.rvm/bin/rvm-prompt)$WHITE\$(__git_ps1 '(%s)')$NO_COLOUR ➜ "
+PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$(~/.rvm/bin/rvm-prompt)$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
 PS2='> '
 PS4='+ '
 

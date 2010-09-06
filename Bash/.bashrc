@@ -14,6 +14,7 @@ source ~/.git-completion.sh
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWSTASHSTATE=true
 export LSCOLORS=Dxfxcxdxbxegedabagacad
 if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
 PS1='\n\h: \[\e[33m\]\w\n\[\e[37;40m\]$(__git_ps1 "(%s)")\[\e[32m\]➜ \[\e[0m\]'

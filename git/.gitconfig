@@ -1,0 +1,15 @@
+[color]
+	branch = auto
+	status = auto
+	interactive = auto
+	diff = auto
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  di = diff
+  dc = diff --cached
+  amend = commit --amend
+  aa = add --all
+  head = log -1
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

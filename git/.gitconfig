@@ -1,8 +1,8 @@
 [color]
-	branch = auto
-	status = auto
-	interactive = auto
-	diff = auto
+  branch = auto
+  status = auto
+  interactive = auto
+  diff = auto
 [alias]
   st = status
   ci = commit

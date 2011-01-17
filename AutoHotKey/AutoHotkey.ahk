@@ -22,7 +22,11 @@ else
 	Run Notepad
 return
 
-Capslock::Escape  
+Capslock::Escape
+
+#IfWinActive ahk_class Vim
+Capslock::LControl
+
 
 ; Note: From now on whenever you run AutoHotkey directly, this script
 ; will be loaded.  So feel free to customize it to suit your needs.

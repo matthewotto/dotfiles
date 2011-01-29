@@ -10,6 +10,10 @@ alias ss='./script/server'
 alias sc='./script/console'
 alias v='mvim'
 alias rvmrc="echo 'rvm use $1' > .rvmrc"
+alias devdir="cd /Development"
+alias drop="open ~/Dropbox"
+alias migrate='rake db:migrate && rake db:test:prepare'
+
 source ~/.git-completion.sh
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true

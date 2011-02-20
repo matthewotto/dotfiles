@@ -13,7 +13,8 @@ alias rvmrc="echo 'rvm use $1' > .rvmrc"
 alias devdir="cd /Development"
 alias drop="open ~/Dropbox"
 alias migrate='rake db:migrate && rake db:test:prepare'
-
+alias dl='osascript /usr/local/bin/dock_left.scpt'
+alias db='osascript /usr/local/bin/dock_bottom.scpt'
 source ~/.git-completion.sh
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true

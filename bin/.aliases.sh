@@ -13,5 +13,5 @@ alias dl='osascript /usr/local/bin/dock_left.scpt'
 alias db='osascript /usr/local/bin/dock_bottom.scpt'
 alias latest='ls -ltU | head'
 alias please='sudo'
-alias mkgemset="rvm gemset create ${PWD##*/}"
+alias mkgemset='rvm gemset create ${PWD##*/}'
 alias rvmrc="echo rvm use $(~/.rvm/bin/rvm-prompt)@${PWD##*/} > .rvmrc"

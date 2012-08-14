@@ -14,4 +14,5 @@ alias db='osascript /usr/local/bin/dock_bottom.scpt'
 alias latest='ls -ltU | head'
 alias please='sudo'
 alias mkgemset='rvm gemset create ${PWD##*/}'
-alias rvmrc="echo rvm use $(~/.rvm/bin/rvm-prompt)@${PWD##*/} > .rvmrc"
+alias rvmrc='echo rvm use $(~/.rvm/bin/rvm-prompt)@${PWD##*/} > .rvmrc'
+alias tmux="TERM=screen-256color-bce tmux"

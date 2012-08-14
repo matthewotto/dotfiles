@@ -37,8 +37,10 @@ precmd () {print -Pn "\e]0;%n@%M: %~\a"}
 
 PROMPT='
 %{$fg[yellow]%}%~%{$reset_color%}
-$ '
+∴'
 RPROMPT='%{$fg[magenta]%} $(~/.rvm/bin/rvm-prompt)%{$reset_color%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 __rvm_project_rvmrc
-define_vim_wrappers
+#define_vim_wrappers
+
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

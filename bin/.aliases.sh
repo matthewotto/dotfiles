@@ -16,3 +16,11 @@ alias please='sudo'
 alias mkgemset='rvm gemset create ${PWD##*/}'
 alias rvmrc='echo rvm use $(~/.rvm/bin/rvm-prompt)@${PWD##*/} > .rvmrc'
 alias tmux="TERM=screen-256color-bce tmux"
+alias gems-kill='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
+alias gems-clean='gems-kill && gem install bundler -v 1.1.4 && gem install rake pivotal_git_scripts'
+alias dos2unix="perl -npe 's/\x0D/\x0A/g' "
+alias r='rails'
+alias diskspace="du -k | grep -v './.*\/' | sort -n"
+alias be="bundle exec"
+alias msqlstop="mysql.server stop"
+alias msql="mysql.server start"

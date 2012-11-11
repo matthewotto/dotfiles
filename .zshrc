@@ -42,5 +42,5 @@ RPROMPT='%{$fg[magenta]%} $(~/.rvm/bin/rvm-prompt)%{$reset_color%}$(~/bin/git-cw
 
 __rvm_project_rvmrc
 #define_vim_wrappers
-
+fpath=(/usr/local/share/zsh-completions $fpath)
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

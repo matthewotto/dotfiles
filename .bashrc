@@ -1,13 +1,16 @@
 set -o vi
 source ~/bin/.aliases.sh
 source ~/bin/.git-completion.sh
+export CLICOLOR=1
+export TERM=xterm-256color
+
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=auto
 export GIT_PS1_SHOWSTASHSTATE=true
 
 #RVM
-if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
+#if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export NODE_PATH="/usr/local/lib/node"
@@ -45,7 +48,8 @@ function pprom {
           TITLEBAR=""
           ;;
   esac
-PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$(~/.rvm/bin/rvm-prompt)$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
+#PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$(~/.rvm/bin/rvm-prompt)$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
+PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
 PS2='> '
 PS4='+ '
 
@@ -71,5 +75,5 @@ function define_vim_wrappers()
       fi
     done
 }
-define_vim_wrappers
+#define_vim_wrappers
 pprom

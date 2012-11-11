@@ -4,7 +4,22 @@ setopt prompt_subst
 autoload -U colors && colors
 autoload -U compinit && compinit
 
+export EDITOR=vim
+export RAILS_ENV=development
+export PATH=$PATH:/usr/X11/bin
+
+# History
+# number of lines kept in history
+export HISTSIZE=1000
+# number of lines saved in the history after logout
+export SAVEHIST=1000
+# location of history
+export HISTFILE=~/.zhistory
+#  append command to history file once executed
+setopt inc_append_history
+
 source ~/bin/.aliases.sh
+source ~/bin/rbenv.zsh
 
 mkcd () {
  mkdir -p "$*"
@@ -31,16 +46,17 @@ function define_vim_wrappers()
     done
 }
 #RVM
-if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
+#if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
 
 precmd () {print -Pn "\e]0;%n@%M: %~\a"}
 
 PROMPT='
 %{$fg[yellow]%}%~%{$reset_color%}
 ∴'
-RPROMPT='%{$fg[magenta]%} $(~/.rvm/bin/rvm-prompt)%{$reset_color%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
+#RPROMPT='%{$fg[magenta]%} $(~/.rvm/bin/rvm-prompt)%{$reset_color%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
+RPROMPT='%{$fg[magenta]%} $(rbenv-prompt-info)%{$reset_color%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
-__rvm_project_rvmrc
+#__rvm_project_rvmrc
 #define_vim_wrappers
 fpath=(/usr/local/share/zsh-completions $fpath)
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

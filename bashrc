@@ -1,6 +1,6 @@
 set -o vi
-source ~/bin/.aliases.sh
-source ~/bin/.git-completion.sh
+source ~/bin/aliases.sh
+source ~/bin/git-completion.sh
 export CLICOLOR=1
 export TERM=xterm-256color
 

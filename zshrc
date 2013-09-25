@@ -66,3 +66,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/npm/bin:/usr/local/share/npm/bin:$PATH"
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# added by travis gem
+source /Users/m.otto/.travis/travis.sh

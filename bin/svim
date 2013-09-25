@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mvim --remote-send '<C-w>n'
+mvim --remote-silent $@

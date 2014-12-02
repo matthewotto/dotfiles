@@ -1,3 +1,4 @@
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+export PATH="$HOME/npm/bin:/usr/local/share/npm/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+export PATH="$HOME/.node/bin:$PATH"

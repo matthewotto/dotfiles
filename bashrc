@@ -79,3 +79,4 @@ function define_vim_wrappers()
 pprom
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/bin" # Add ~/bin to path for scripting

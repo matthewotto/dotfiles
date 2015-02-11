@@ -1,9 +1,11 @@
 [autosetup]
   rebase = true
+[core]
+  editor = vim
 [branch]
- autosetuprebase = remote
- autosetupmerge = true
- mergeoptions = --no-commit --no-ff
+  autosetuprebase = remote
+  autosetupmerge = true
+  mergeoptions = --no-commit --no-ff
 [color]
   branch = auto
   status = auto

@@ -54,7 +54,7 @@ precmd () {print -Pn "\e]0;%n@%M: %~\a"}
 
 PROMPT='
 %{$fg[yellow]%}%~%{$reset_color%}
-∴'
+∴ '
 
 #RVM
 #if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi

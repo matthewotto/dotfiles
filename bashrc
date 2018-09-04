@@ -1,6 +1,10 @@
 set -o vi
-source ~/bin/aliases.sh
-source ~/bin/git-completion.sh
+
+source $HOME/bin/aliases.sh
+source $HOME/bin/git-completion.sh
+private_path=$HOME/bin/private.local
+test -r $private_path && . $private_path
+
 export CLICOLOR=1
 export TERM=xterm-256color
 
@@ -48,14 +52,17 @@ function pprom {
           TITLEBAR=""
           ;;
   esac
-#PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$(~/.rvm/bin/rvm-prompt)$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
-PS1="$TITLEBAR\\n$BROWN\w\n$PURPLE\$$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
+  if [[ -z "$SSH_CLIENT" ]]; then
+    prompt_host=""
+  else
+    # prompt_host=%{$fg_bold[white]%}@%{$reset_color$fg[yellow]%}$(hostname -s)
+    prompt_host="$LIGHT_RED\h "
+  fi
+PS1="$TITLEBAR\\n$prompt_host$BROWN\w\n$PURPLE\$WHITE\$(__git_ps1 ' (%s)')$NO_COLOUR ➜ "
 PS2='> '
 PS4='+ '
 
-
 }
-
 
 # Define Vim wrappers which unsets GEM_HOME and GEM_PATH before
 # invoking vim and all known aliases
@@ -78,5 +85,8 @@ function define_vim_wrappers()
 #define_vim_wrappers
 pprom
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/bin" # Add ~/bin to path for scripting
+export PATH="$PATH:$HOME/workspace/git-tools" # Add ~/workspace/git-tools to path for scripting
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

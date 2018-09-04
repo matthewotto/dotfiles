@@ -25,4 +25,6 @@ alias msqlq='mysql.server stop'
 alias msqls='mysql.server start'
 alias pgs='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgq='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias drink='brew update && brew upgrade && brew cleanup -s -force && brew doctor'
+alias xcode="xcode-select -p | sed 's/\/Contents\/Developer//' | xargs open"
+alias branchname="git rev-parse --abbrev-ref HEAD | tr -d '\n' | pbcopy"
+alias cat=bat

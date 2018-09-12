@@ -22,16 +22,16 @@ rm -rf  ~/bin
 ln -s "$PWD"/ackrc ~/.ackrc
 ln -s "$PWD"/bash_profile ~/.bash_profile
 ln -s "$PWD"/bashrc ~/.bashrc
+ln -s "$PWD"/gitconfig ~/.gitconfig
 ln -s "$PWD"/gemrc ~/.gemrc
 ln -s "$PWD"/irbrc ~/.irbrc
 ln -s "$PWD"/zshrc ~/.zshrc
 ln -s "$PWD"/bin ~/bin
 
-cp "$PWD"/gitconfig ~/.gitconfig
 set +v
 
-printf "%s[user]%s\n  name = %s$name%s\n  email = $email" >> ~/.gitconfig
+printf "%s[user]%s\n  name = %s$name%s\n  email = $email" >> ~/bin/gitconfig.local
 if [ "{$OS}"=="darwin" ]
 then
-  printf "%s\n[credential]%s\n  helper = osxkeychain" >> ~/.gitconfig
+  printf "%s\n[credential]%s\n  helper = osxkeychain" >> ~/bin/gitconfig.local
 fi

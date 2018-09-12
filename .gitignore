@@ -1,2 +1,2 @@
 .DS_Store
-bin/private.local
+bin/*.local

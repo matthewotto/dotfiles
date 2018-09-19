@@ -72,4 +72,3 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # added by travis gem
 #source /Users/m.otto/.travis/travis.sh
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-source /usr/local/opt/autoenv/activate.sh

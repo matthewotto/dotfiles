@@ -2,6 +2,9 @@
   rebase = true
 [core]
   editor = vim
+  excludesfile = /Users/mattotto/.global_ignore
+  ignorecase = true
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [branch]
   autosetuprebase = remote
   autosetupmerge = true
@@ -26,14 +29,25 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   g = log --pretty=format:\"%h %an - %s\" --graph
   lc = log ORIG_HEAD.. --stat --no-merges
-[merge]
-  tool = diffmerge
-[mergetool "diffmerge"]
-  cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-  trustExitCode = true
-[mergetool]
-  keepBackup = false
-[diff]
-  tool = diffmerge
-[difftool "diffmerge"]
-  cmd = diffmerge $LOCAL $REMOTE
+  patch = !git --no-pager diff --no-color
+[pager]
+    diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustexitcode = true
+[include]
+    path = bin/gitconfig.local

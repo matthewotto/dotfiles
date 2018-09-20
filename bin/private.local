@@ -1,8 +1,0 @@
-export GITHUB_TOKEN="0c7a0311c55e3b2a808db3444ef3986322adce4f"
-export HIPCHAT_TOKEN="WUlQZIIDZn24P5LqB0jn9yETgp5cciEteWlcE8t3"
-
-alias github="open https://prodghe.pdn.apple.com/iwork/tangier"
-alias pulls="open https://prodghe.pdn.apple.com/iwork/tangier/pulls/matthew-otto"
-alias branches="open https://prodghe.pdn.apple.com/iwork/tangier/branches/yours"
-alias gists="open https://prodghe.pdn.apple.com/gist/matthew-otto"
-alias fondue="ssh matthewotto@17.44.178.175"

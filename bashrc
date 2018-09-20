@@ -2,7 +2,7 @@ set -o vi
 
 source $HOME/bin/aliases.sh
 source $HOME/bin/git-completion.sh
-private_path=$HOME/bin/private.local
+private_path=$HOME/dotfiles-local/private.local
 test -r $private_path && . $private_path
 
 export CLICOLOR=1

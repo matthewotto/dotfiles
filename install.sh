@@ -30,8 +30,8 @@ ln -s "$PWD"/bin ~/bin
 
 set +v
 
-printf "%s[user]%s\n  name = %s$name%s\n  email = $email" >> ~/bin/gitconfig.local
+printf "%s[user]%s\n  name = %s$name%s\n  email = $email" >> ~/dotfiles-local/gitconfig.local
 if [ "{$OS}"=="darwin" ]
 then
-  printf "%s\n[credential]%s\n  helper = osxkeychain" >> ~/bin/gitconfig.local
+  printf "%s\n[credential]%s\n  helper = osxkeychain" >> ~/dotfiles-local/gitconfig.local
 fi

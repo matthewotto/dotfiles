@@ -5,6 +5,9 @@ source $HOME/bin/git-completion.sh
 private_path=$HOME/dotfiles-local/private.local
 test -r $private_path && . $private_path
 
+gem_local=$HOME/dotfiles-local/gemrc.local
+test -r $gem_local && export GEMRC=$gem_local
+
 export CLICOLOR=1
 export TERM=xterm-256color
 

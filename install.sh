@@ -19,6 +19,8 @@ rm -rf ~/.irbrc
 rm -rf ~/.zshrc
 rm -rf  ~/bin
 
+mkdir -p "$PWD"/dotfiles-local
+
 ln -s "$PWD"/ackrc ~/.ackrc
 ln -s "$PWD"/bash_profile ~/.bash_profile
 ln -s "$PWD"/bashrc ~/.bashrc
@@ -27,6 +29,7 @@ ln -s "$PWD"/gemrc ~/.gemrc
 ln -s "$PWD"/irbrc ~/.irbrc
 ln -s "$PWD"/zshrc ~/.zshrc
 ln -s "$PWD"/bin ~/bin
+ln -s "$PWD"/dotfiles-local ~/dotfiles-local
 
 set +v
 

@@ -1,8 +1,13 @@
 setopt menucomplete
 setopt prompt_subst
+setopt correctall
+setopt hist_ignore_all_dups
 
 autoload -U colors && colors
 autoload -U compinit && compinit
+
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 export EDITOR=vim
 export RAILS_ENV=development
@@ -12,9 +17,9 @@ export PATH=$PATH:/usr/X11/bin
 # number of lines kept in history
 export HISTSIZE=1000
 # number of lines saved in the history after logout
-export SAVEHIST=1000
+export SAVEHIST=$HISTSIZE
 # location of history
-export HISTFILE=~/.zhistory
+export HISTFILE=$HOME/.zhistory
 #  append command to history file once executed
 setopt inc_append_history
 
@@ -22,32 +27,16 @@ export CLICOLOR=1
 export TERM=xterm-256color
 export LSCOLORS="exfxcxdxbxegedabagacad"
 
-source ~/bin/aliases.sh
-#source ~/bin/rbenv.zsh
+source $HOME/bin/aliases.sh
+private_path=$HOME/dotfiles-local/private.local
+test -r $private_path && . $private_path
+
+gem_local=$HOME/dotfiles-local/gemrc.local
+test -r $gem_local && export GEMRC=$gem_local
 
 mkcd () {
  mkdir -p "$*"
  cd "$*"
-}
-
-
-# Define Vim wrappers which unsets GEM_HOME and GEM_PATH before
-# invoking vim and all known aliases
-#
-# @author Wael Nasreddine <wael.nasreddine@gmail.com>
-function define_vim_wrappers()
-{
-    vim_commands=(
-        eview evim gview gvim gvimdiff gvimtutor rgview
-        gvim rview rvim vim vimdiff vimtutor xxd mvim
-    )
-
-    for cmd in ${vim_commands[@]}; do
-      cmd_path=`/usr/bin/env which -a "${cmd}" 2>/dev/null | grep '^/'`
-      if [ -x "${cmd_path}" ]; then
-        eval "function ${cmd} () { (unset GEM_HOME; unset GEM_PATH; $cmd_path \$@) }"
-      fi
-    done
 }
 
 precmd () {print -Pn "\e]0;%n@%M: %~\a"}
@@ -56,19 +45,7 @@ PROMPT='
 %{$fg[yellow]%}%~%{$reset_color%}
 ∴ '
 
-#RVM
-#if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
-#RPROMPT='%{$fg[magenta]%} $(~/.rvm/bin/rvm-prompt)%{$reset_color%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
-
-#RBENV
 source ~/bin/rbenv.zsh
-RPROMPT='%{$fg[magenta]%} $(rbenv-prompt-info)%{$reset_color%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
+RPROMPT='$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
-#__rvm_project_rvmrc
-#define_vim_wrappers
 fpath=(/usr/local/share/zsh-completions $fpath)
-#export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# added by travis gem
-#source /Users/m.otto/.travis/travis.sh
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

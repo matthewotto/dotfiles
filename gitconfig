@@ -50,4 +50,4 @@
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustexitcode = true
 [include]
-    path = bin/gitconfig.local
+    path = dotfiles-local/gitconfig.local

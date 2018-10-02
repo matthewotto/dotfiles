@@ -16,8 +16,6 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=auto
 export GIT_PS1_SHOWSTASHSTATE=true
 
-#RVM
-#if [[ -s /Users/Matt/.rvm/scripts/rvm ]] ; then source /Users/Matt/.rvm/scripts/rvm ; fi
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export NODE_PATH="/usr/local/lib/node"
@@ -46,7 +44,6 @@ function pprom {
   local    LIGHT_RED="\[\033[1;31m\]"
   local       NO_COLOUR="\[\033[0m\]"
 
-  
   case $TERM in
       xterm*)
           TITLEBAR='\[\033]0;\u@\h:\w\007\]'
@@ -66,30 +63,6 @@ PS2='> '
 PS4='+ '
 
 }
-
-# Define Vim wrappers which unsets GEM_HOME and GEM_PATH before
-# invoking vim and all known aliases
-#
-# @author Wael Nasreddine <wael.nasreddine@gmail.com>
-function define_vim_wrappers()
-{
-    vim_commands=(
-        eview evim gview gvim gvimdiff gvimtutor rgview
-        gvim rview rvim vim vimdiff vimtutor xxd mvim
-    )
-
-    for cmd in ${vim_commands[@]}; do
-      cmd_path=`/usr/bin/env which -a "${cmd}" 2>/dev/null | grep '^/'`
-      if [ -x "${cmd_path}" ]; then
-        eval "function ${cmd} () { (unset GEM_HOME; unset GEM_PATH; $cmd_path \$@) }"
-      fi
-    done
-}
-#define_vim_wrappers
 pprom
 
 export PATH="$PATH:$HOME/bin" # Add ~/bin to path for scripting
-export PATH="$PATH:$HOME/workspace/git-tools" # Add ~/workspace/git-tools to path for scripting
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

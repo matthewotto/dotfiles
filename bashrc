@@ -1,9 +1,14 @@
 set -o vi
+shopt -s extglob
 
 source $HOME/bin/aliases.sh
 source $HOME/bin/git-completion.sh
-private_path=$HOME/dotfiles-local/private.local
-test -r $private_path && . $private_path
+private_path=$HOME/dotfiles-local
+
+for localfile in $private_path/!(gemrc|gitconfig).local
+do
+source $localfile
+done
 
 gem_local=$HOME/dotfiles-local/gemrc.local
 test -r $gem_local && export GEMRC=$gem_local

@@ -1,7 +1,8 @@
+setopt correctall
+setopt extendedglob
+setopt hist_ignore_all_dups
 setopt menucomplete
 setopt prompt_subst
-setopt correctall
-setopt hist_ignore_all_dups
 
 autoload -U colors && colors
 autoload -U compinit && compinit
@@ -28,8 +29,11 @@ export TERM=xterm-256color
 export LSCOLORS="exfxcxdxbxegedabagacad"
 
 source $HOME/bin/aliases.sh
-private_path=$HOME/dotfiles-local/private.local
-test -r $private_path && . $private_path
+
+private_path=$HOME/dotfiles-local
+for localfile in $private_path/^(gitconfig|gemrc).local; do
+source $localfile
+done
 
 gem_local=$HOME/dotfiles-local/gemrc.local
 test -r $gem_local && export GEMRC=$gem_local

@@ -31,7 +31,7 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 source $HOME/bin/aliases.sh
 
 private_path=$HOME/dotfiles-local
-for localfile in $private_path/^(gitconfig|gemrc).local; do
+for localfile in $private_path/^(gitconfig|gemrc).local(.N); do
 source $localfile
 done
 

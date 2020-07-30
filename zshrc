@@ -1,4 +1,4 @@
-setopt correctall
+setopt correct
 setopt extendedglob
 setopt hist_ignore_all_dups
 setopt menucomplete
@@ -43,11 +43,18 @@ mkcd () {
  cd "$*"
 }
 
+
+if [[ -n "$SSH_CLIENT" ]]; then
+  prompt_host=%{$fg_bold[red]%}@%{$reset_color$fg[red]%}$(hostname -s)" "
+else
+  prompt_host=""
+fi
+
 precmd () {print -Pn "\e]0;%n@%M: %~\a"}
 
 PROMPT='
 %{$fg[yellow]%}%~%{$reset_color%}
-∴ '
+$prompt_host∴ '
 
 source ~/bin/rbenv.zsh
 RPROMPT='$(~/bin/git-cwd-info.rb)%{$reset_color%}'

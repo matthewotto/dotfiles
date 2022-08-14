@@ -31,6 +31,8 @@ ln -s "$PWD"/zshrc ~/.zshrc
 ln -s "$PWD"/bin ~/bin
 ln -s "$PWD"/dotfiles-local ~/dotfiles-local
 
+brew bundle install
+
 set +v
 
 printf "%s[user]%s\n  name = %s$name%s\n  email = $email" >> ~/dotfiles-local/gitconfig.local

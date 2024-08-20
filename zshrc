@@ -60,3 +60,4 @@ source ~/bin/rbenv.zsh
 RPROMPT='$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+[[ -d /opt/homebrew/share/zsh/site-functions ]] && fpath+=(/opt/homebrew/share/zsh/site-functions)

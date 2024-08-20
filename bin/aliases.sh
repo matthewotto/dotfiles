@@ -26,7 +26,8 @@ alias msqls='mysql.server start'
 alias pgs='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgq='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias xcode="xcode-select -p | sed 's/\/Contents\/Developer//' | xargs open"
-alias branchname="git rev-parse --abbrev-ref HEAD | tr -d '\n' | pbcopy"
+alias branchname="git rev-parse --abbrev-ref HEAD | tr -d '\n'"
+alias copybranchname="branchname | pbcopy"
 alias cat=bat
 
 # Colour constants for nicer output.

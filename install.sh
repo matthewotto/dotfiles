@@ -16,6 +16,7 @@ configFiles=(
   "gemrc"
   "gitconfig"
   "irbrc"
+  "tmux.conf"
   "zshrc"
 )
 

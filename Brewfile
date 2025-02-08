@@ -1,0 +1,6 @@
+tap "heroku/brew"
+tap "homebrew/bundle"
+brew "ack"
+brew "bat"
+brew "diff-so-fancy"
+brew "tree"

@@ -52,7 +52,7 @@ pr() {
     # If there's anything which starts with http, it's a good guess it'll be a
     # link to GitHub/GitLab/Whatever. So open it.
     link=$(echo "${push_output}" | grep -o 'http.*' | sed -e 's/[[:space:]]*$//')
-    if [ "${link}" ]; then
+    if [ "${link}" ] && echo "${link}" | grep -q '/pull/new/'; then
         echo ""
         echo -e "Opening: ${GREEN}${link}${RESET}..."
         open ${link}

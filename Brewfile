@@ -3,4 +3,6 @@ tap "homebrew/bundle"
 brew "ack"
 brew "bat"
 brew "diff-so-fancy"
+brew "tmux"
 brew "tree"
+

@@ -49,12 +49,11 @@ pr() {
     echo ""
     echo -e "${push_output}"
 
-    # If there's anything which starts with http, it's a good guess it'll be a
-    # link to GitHub/GitLab/Whatever. So open it.
-    link=$(echo "${push_output}" | grep -o 'http.*' | sed -e 's/[[:space:]]*$//')
-    if [ "${link}" ] && echo "${link}" | grep -q '/pull/new/'; then
+    # Extract only the pull request creation URL from the push output.
+    link=$(echo "${push_output}" | grep -o 'http[^ ]*' | grep '/pull/new/')
+    if [ "${link}" ]; then
         echo ""
         echo -e "Opening: ${GREEN}${link}${RESET}..."
-        open ${link}
+        open "${link}"
     fi
 }

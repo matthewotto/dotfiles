@@ -34,6 +34,16 @@ mkdir -p "$PWD"/dotfiles-local
 rm -rf ~/bin
 ln -s "$PWD"/bin ~/bin
 
+echo "Creating ~/.tmux and ~/.config directories"
+mkdir -p ~/.tmux
+mkdir -p ~/.config
+ 
+echo "Symlinking tmux scripts"
+[ -e ~/.tmux/scripts ] || ln -s "$PWD"/tmux/scripts ~/.tmux/scripts
+ 
+echo "Symlinking tmux-powerline config"
+[ -e ~/.config/tmux-powerline ] || ln -s "$PWD"/config/tmux-powerline ~/.config/tmux-powerline
+
 echo "Installing Xcode theme"
 XCODE_THEME_INSTALL_PATH=~/Library/Developer/Xcode/UserData/FontAndColorThemes
 XCODE_THEME_NAME=base16-twilight.dark.xccolortheme

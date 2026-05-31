@@ -24,7 +24,8 @@ TMUX_POWERLINE_SEPARATOR_RIGHT_THIN=$'\xee\x82\xb1'  # U+E0B1  thin right arrow
 
 TMUX_POWERLINE_WINDOW_LEFT=$'\xee\x82\xb6'           # U+E0B6  left half-circle (filled)
 TMUX_POWERLINE_WINDOW_RIGHT=$'\xee\x82\xb4'          # U+E0B4  right half-circle (filled)
-TMUX_POWERLINE_DISK_USAGE_IMAGE=$'\xef\x82\xa0'      # U+F0A0  HDD icon (Font Awesome)
+
+TMUX_POWERLINE_SEG_VCS_BRANCH_DEFAULT_SYMBOL=$'\xee\x9c\xa5'  # U+E725  git branch
 
 TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR:-$BASE00}
 TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-$BASE05}
@@ -37,17 +38,15 @@ TMUX_POWERLINE_SEG_VCS_BRANCH_GIT_SYMBOL_COLOUR=$BASE00
 TMUX_POWERLINE_SEG_MODE_INDICATOR_PREFIX_MODE_TEXT_COLOR="colour${BASE08}"
 TMUX_POWERLINE_SEG_MODE_INDICATOR_COPY_MODE_TEXT_COLOR="colour${BASE0A}"
 
-TMUX_POWERLINE_SEG_VCS_BRANCH_DEFAULT_SYMBOL=""
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_CURRENT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
 		"#[$(tp_format regular)]"
-		"#[fg=colour${BASE0A},bg=colour${BASE00}]"
+		"#[fg=colour${BASE0A}]#[bg=colour${BASE00}]"
 		"$TMUX_POWERLINE_WINDOW_LEFT"
-		"#[fg=colour${BASE00},bg=colour${BASE0A}]"
-		" #F#I:#W "
-		"#[fg=colour${BASE0A},bg=colour${BASE00}]"
+		"#[fg=colour${BASE00}]#[bg=colour${BASE0A}] #F#I:#W "
+		"#[fg=colour${BASE0A}]#[bg=colour${BASE00}]"
 		"$TMUX_POWERLINE_WINDOW_RIGHT"
 	)
 fi
@@ -61,17 +60,20 @@ fi
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
+	# Note: commas inside #{?} conditionals are delimiters, so #[fg=X,bg=Y] must be
+	# written as two separate directives #[fg=X]#[bg=Y] inside conditionals.
 	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
-		"#[fg=colour${BASE02},bg=colour${BASE00}]"
+		# Opening separator fg — red for bell, orange for silience, normal otherwise
+		"#{?window_bell_flag,#[fg=colour${BASE08}],#{?window_silence_flag,#[fg=colour${BASE09}],#[fg=colour${BASE02}]}}#[bg=colour${BASE00}]"
 		"$TMUX_POWERLINE_WINDOW_LEFT"
-		"#[fg=colour${BASE05},bg=colour${BASE02}]"
-		" #{?window_flags,#F, }#I:#W "
-		"#[fg=colour${BASE02},bg=colour${BASE00}]"
+		# Pill content — fg and bg set separately to avoid comma-in-conditional issue
+		"#{?window_bell_flag,#[fg=colour${BASE00}]#[bg=colour${BASE08}] #F#I:#W ,#{?window_silence_flag,#[fg=colour${BASE00}]#[bg=colour${BASE09}] #{?window_flags,#F, }#I:#W ,#[fg=colour${BASE05}]#[bg=colour${BASE02}] #{?window_flags,#F, }#I:#W }}"
+		# Closing separator fg — same logic as opening
+		"#{?window_bell_flag,#[fg=colour${BASE08}],#{?window_silence_flag,#[fg=colour${BASE09}],#[fg=colour${BASE02}]}}#[bg=colour${BASE00}]"
 		"$TMUX_POWERLINE_WINDOW_RIGHT"
 		"#[$(tp_format regular)]"
 	)
 fi
-
 
 # Format: segment_name [bg_color] [fg_color] [separator] [sep_bg] [sep_fg] [spacing_disable] [separator_disable]
 # Colors: named, #rrggbb hex, 0-255 palette index, default_bg_color, default_fg_color, default, terminal
@@ -79,13 +81,13 @@ fi
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_LEFT_STATUS_SEGMENTS" ]; then
 	TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-		# Mode indicator — blue bg, dark fg
+		# Mode indicator — dark surface bg, muted fg
 		"mode_indicator ${BASE01} ${BASE03}"
-		# Session name — green bg, dark fg
+		# Session name — blue bg, dark surface fg
 		"tmux_session_info ${BASE0D} ${BASE01} ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD}"
-		# Hostname — blue bg, dark fg
+		# Hostname — brown bg, dark fg
 		"hostname ${BASE0F} ${BASE00}"
-		# CWD — blue bg, dark fg
+		# CWD — selection bg, primary fg
 		"pwd ${BASE02} ${BASE05}"
 	)
 fi
@@ -93,10 +95,11 @@ fi
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-		# Git branch — blue bg, dark fg
+		# Git branch — green bg, dark surface fg
 		"vcs_branch ${BASE0B} ${BASE01}"
+		# Continuum save — purple bg, dark surface fg
 		"tmux_continuum_save ${BASE0E} ${BASE01}"
-		# Memory — dark bg, primary fg
-		"mem_used ${BASE0E} ${BASE01} "
+		# Memory — purple bg, dark surface fg
+		"mem_used ${BASE0E} ${BASE01}"
 	)
 fi

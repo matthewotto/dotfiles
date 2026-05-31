@@ -98,11 +98,5 @@ if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 		"tmux_continuum_save ${BASE0E} ${BASE01}"
 		# Memory — dark bg, primary fg
 		"mem_used ${BASE0E} ${BASE01} "
-		# Disk usage — dark bg, orange fg
-		"disk_usage ${BASE0E} ${BASE01} ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
-		# Date — dark surface bg, primary fg
-		"date ${BASE02} ${BASE09} ${TMUX_POWERLINE_SEPARATOR_LEFT_BOLD} ${BASE0E}"
-		# Time — orange/salmon bg, dark fg
-		"time ${BASE09} ${BASE00} ${TMUX_POWERLINE_SEPARATOR_LEFT_BOLD}"
 	)
 fi

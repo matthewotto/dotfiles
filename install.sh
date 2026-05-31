@@ -35,12 +35,15 @@ rm -rf ~/bin
 ln -s "$PWD"/bin ~/bin
 
 echo "Creating ~/.tmux and ~/.config directories"
-mkdir -p ~/.tmux
+mkdir -p ~/.tmux/plugins
 mkdir -p ~/.config
- 
+
+echo "Installing tmux plugin manager"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 echo "Symlinking tmux scripts"
 [ -e ~/.tmux/scripts ] || ln -s "$PWD"/tmux/scripts ~/.tmux/scripts
- 
+
 echo "Symlinking tmux-powerline config"
 [ -e ~/.config/tmux-powerline ] || ln -s "$PWD"/config/tmux-powerline ~/.config/tmux-powerline
 
@@ -54,7 +57,7 @@ XCODE_THEME_NAME=base16-twilight.dark.xccolortheme
 echo "Updating Homebrew"
 brew bundle install
 
-echo "Updating git config.loca with user and email"
+echo "Updating git config.local with user and email"
 printf "%s[user]%s\n  name = %s$name%s\n  email = $email" >> ~/dotfiles-local/gitconfig.local
 if [ "{$OS}"=="darwin" ]
 then
